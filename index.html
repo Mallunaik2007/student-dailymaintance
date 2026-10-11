@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyFlow - Student Planner</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">S</div>
+            <div>
+                <h2>StudyFlow</h2>
+                <span>Student Planner</span>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <a href="#dashboard" class="nav-link active">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="#timetable" class="nav-link">
+                <span>▦</span>
+                Timetable
+            </a>
+
+            <a href="#tasks" class="nav-link">
+                <span>✓</span>
+                Tasks
+            </a>
+
+            <a href="#learning" class="nav-link">
+                <span>◎</span>
+                Learning Goals
+            </a>
+
+            <a href="#timer" class="nav-link">
+                <span>◷</span>
+                Study Timer
+            </a>
+
+            <a href="#progress" class="nav-link">
+                <span>▥</span>
+                Progress
+            </a>
+
+            <a href="#calendar" class="nav-link">
+                <span>▣</span>
+                Calendar
+            </a>
+
+            <a href="#notes" class="nav-link">
+                <span>▤</span>
+                Notes
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button class="theme-button" id="themeBtn">
+                <span>◐</span>
+                Dark Mode
+            </button>
+
+            <div class="profile-small">
+                <div class="avatar">M</div>
+
+                <div>
+                    <strong>MALLU</strong>
+                    <small>CSE Student</small>
+                </div>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content" id="dashboard">
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div class="mobile-logo">
+                <strong>StudyFlow</strong>
+            </div>
+
+            <div class="top-actions">
+
+                <button class="icon-button" id="notificationBtn">
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="top-avatar">M</div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= WELCOME ================= -->
+
+        <section class="welcome-section">
+
+            <div>
+
+                <p class="date-text" id="currentDate">
+                    Thursday, September 25
+                </p>
+
+                <h1>
+                    Good Afternoon,
+                    <span>MALLU NAIK 👋</span>
+                </h1>
+
+                <p class="welcome-text">
+                    Plan your day. Learn something new. Make progress.
+                </p>
+
+            </div>
+
+            <button class="primary-button" id="addActivityBtn">
+                + Add Activity
+            </button>
+
+        </section>
+
+
+        <!-- ================= STAT CARDS ================= -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    ◔
+                </div>
+
+                <div>
+                    <p>Daily Progress</p>
+                    <h2 id="progressPercentage">0%</h2>
+                </div>
+
+                <div class="mini-progress">
+                    <div id="progressBar"></div>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    ◷
+                </div>
+
+                <div>
+                    <p>Study Time</p>
+                    <h2 id="studyTime">0h 00m</h2>
+                </div>
+
+                <span class="stat-label">
+                    Today
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    ✓
+                </div>
+
+                <div>
+                    <p>Tasks Done</p>
+                    <h2 id="tasksDone">0 / 0</h2>
+                </div>
+
+                <span class="stat-label">
+                    Today
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    ▣
+                </div>
+
+                <div>
+                    <p>Classes</p>
+                    <h2 id="classCount">0</h2>
+                </div>
+
+                <span class="stat-label">
+                    Today
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DASHBOARD GRID ================= -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- ================= TODAY'S SCHEDULE ================= -->
+
+            <div class="card schedule-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Today's Schedule</h2>
+                        <p>Your flexible plan for today</p>
+                    </div>
+
+                    <button
+                        class="text-button"
+                        id="clearCompletedBtn"
+                    >
+                        Clear completed
+                    </button>
+
+                </div>
+
+
+                <div class="timeline" id="timeline">
+
+                    <!-- Javascript will create activities here -->
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= NEXT UP ================= -->
+
+            <div class="card next-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Up Next</h2>
+                        <p>Your next activity</p>
+                    </div>
+
+                </div>
+
+                <div class="next-activity">
+
+                    <div class="next-time">
+                        <span id="nextTime">04:00 PM</span>
+                    </div>
+
+                    <div class="next-info">
+
+                        <h3 id="nextActivity">
+                            DSA Practice
+                        </h3>
+
+                        <p id="nextCategory">
+                            Study Session
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quick-actions">
+
+                    <button id="rescheduleBtn">
+                        ↗ Reschedule
+                    </button>
+
+                    <button id="completeNextBtn">
+                        ✓ Complete
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ================= LEARNING GOALS ================= -->
+
+        <section id="learning" class="section">
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Today's Learning Goals</h2>
+                    <p>What do you want to learn today?</p>
+                </div>
+
+                <button
+                    class="secondary-button"
+                    id="addGoalBtn"
+                >
+                    + Add Goal
+                </button>
+
+            </div>
+
+
+            <div class="goals-grid" id="goalsContainer">
+
+                <!-- JavaScript creates goals -->
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TASKS ================= -->
+
+        <section id="tasks" class="section">
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Tasks & Assignments</h2>
+                    <p>Keep track of your pending work</p>
+                </div>
+
+                <button
+                    class="secondary-button"
+                    id="addTaskBtn"
+                >
+                    + Add Task
+                </button>
+
+            </div>
+
+
+            <div class="tasks-container" id="tasksContainer">
+
+                <!-- JavaScript creates tasks -->
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TIMETABLE ================= -->
+
+        <section id="timetable" class="section">
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Weekly Timetable</h2>
+                    <p>Your regular class schedule</p>
+                </div>
+
+                <button
+                    class="secondary-button"
+                    id="addClassBtn"
+                >
+                    + Add Class
+                </button>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table class="timetable">
+
+                    <thead>
+
+                        <tr>
+                            <th>Time</th>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th>Wednesday</th>
+                            <th>Thursday</th>
+                            <th>Friday</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="timetableBody">
+                        <!-- JavaScript creates timetable rows here -->
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TIMER ================= -->
+
+        <section id="timer" class="section">
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Focus Timer</h2>
+                    <p>Focus on one thing at a time</p>
+                </div>
+
+            </div>
+
+
+            <div class="timer-card">
+
+                <div class="timer-circle">
+
+                    <span id="timerDisplay">
+                        25:00
+                    </span>
+
+                    <small>
+                        Focus
+                    </small>
+
+                </div>
+
+
+                <div class="timer-controls">
+
+                    <button
+                        class="timer-option active"
+                        data-minutes="25"
+                    >
+                        25 min
+                    </button>
+
+                    <button
+                        class="timer-option"
+                        data-minutes="50"
+                    >
+                        50 min
+                    </button>
+
+                    <button
+                        class="timer-option"
+                        data-minutes="5"
+                    >
+                        5 min
+                    </button>
+
+                </div>
+
+
+                <div class="timer-buttons">
+
+                    <button
+                        class="primary-button"
+                        id="startTimer"
+                    >
+                        Start Focus
+                    </button>
+
+                    <button
+                        class="secondary-button"
+                        id="resetTimer"
+                    >
+                        Reset
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROGRESS ================= -->
+
+        <section id="progress" class="section">
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Weekly Progress</h2>
+                    <p>Your study activity this week</p>
+                </div>
+
+            </div>
+
+
+            <div class="card chart-card">
+
+                <div class="chart">
+
+                    <div class="bar-column">
+                        <div class="bar" style="height: 55%;"></div>
+                        <span>Mon</span>
+                    </div>
+
+                    <div class="bar-column">
+                        <div class="bar" style="height: 70%;"></div>
+                        <span>Tue</span>
+                    </div>
+
+                    <div class="bar-column">
+                        <div class="bar" style="height: 45%;"></div>
+                        <span>Wed</span>
+                    </div>
+
+                    <div class="bar-column">
+                        <div class="bar" style="height: 85%;"></div>
+                        <span>Thu</span>
+                    </div>
+
+                    <div class="bar-column">
+                        <div class="bar" style="height: 65%;"></div>
+                        <span>Fri</span>
+                    </div>
+
+                    <div class="bar-column">
+                        <div class="bar" style="height: 35%;"></div>
+                        <span>Sat</span>
+                    </div>
+
+                    <div class="bar-column">
+                        <div class="bar" style="height: 25%;"></div>
+                        <span>Sun</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CALENDAR ================= -->
+
+        <section id="calendar" class="section">
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Calendar</h2>
+                    <p>Plan and view your important dates</p>
+                </div>
+
+            </div>
+
+
+            <div class="calendar-card card">
+
+                <div class="calendar-header">
+
+                    <button id="prevMonth">
+                        ‹
+                    </button>
+
+                    <h2 id="calendarMonth">
+                        September 2026
+                    </h2>
+
+                    <button id="nextMonth">
+                        ›
+                    </button>
+
+                </div>
+
+
+                <div class="calendar-weekdays">
+
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+
+                </div>
+
+
+                <div
+                    class="calendar-days"
+                    id="calendarDays"
+                >
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NOTES ================= -->
+
+        <section id="notes" class="section">
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Quick Notes</h2>
+                    <p>Write down anything you don't want to forget</p>
+                </div>
+
+                <button
+                    class="secondary-button"
+                    id="saveNoteBtn"
+                >
+                    Save Note
+                </button>
+
+            </div>
+
+
+            <div class="notes-card card">
+
+                <textarea
+                    id="notesArea"
+                    placeholder="Write your notes here..."
+                ></textarea>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <p>
+                StudyFlow © 2026 · Plan your day, your way.
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <!-- ================= ACTIVITY MODAL ================= -->
+
+    <div class="modal-overlay" id="activityModal">
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Add Activity</h2>
+                    <p>Create a plan for your day</p>
+                </div>
+
+                <button class="close-modal" data-close="activityModal">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="activityForm">
+
+                <label>
+                    Activity Name
+
+                    <input
+                        type="text"
+                        id="activityName"
+                        placeholder="e.g. DSA Practice"
+                        required
+                    >
+
+                </label>
+
+
+                <div class="form-row">
+
+                    <label>
+                        Start Time
+
+                        <input
+                            type="time"
+                            id="activityStart"
+                            required
+                        >
+
+                    </label>
+
+
+                    <label>
+                        End Time
+
+                        <input
+                            type="time"
+                            id="activityEnd"
+                            required
+                        >
+
+                    </label>
+
+                </div>
+
+
+                <label>
+                    Category
+
+                    <select id="activityCategory">
+
+                        <option value="Study">
+                            Study
+                        </option>
+
+                        <option value="Class">
+                            Class
+                        </option>
+
+                        <option value="Assignment">
+                            Assignment
+                        </option>
+
+                        <option value="Personal">
+                            Personal
+                        </option>
+
+                        <option value="Exercise">
+                            Exercise
+                        </option>
+
+                        <option value="Break">
+                            Break
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+                <label>
+                    Priority
+
+                    <select id="activityPriority">
+
+                        <option value="Low">
+                            Low
+                        </option>
+
+                        <option value="Medium" selected>
+                            Medium
+                        </option>
+
+                        <option value="High">
+                            High
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+                <label>
+                    Notes
+
+                    <textarea
+                        id="activityNotes"
+                        placeholder="Optional notes..."
+                    ></textarea>
+
+                </label>
+
+
+                <div class="modal-buttons">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        data-close="activityModal"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Save Activity
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TASK MODAL ================= -->
+
+    <div class="modal-overlay" id="taskModal">
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Add Task</h2>
+                    <p>Add an assignment or task</p>
+                </div>
+
+                <button
+                    class="close-modal"
+                    data-close="taskModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="taskForm">
+
+                <label>
+                    Task Name
+
+                    <input
+                        type="text"
+                        id="taskName"
+                        placeholder="e.g. Complete DBMS assignment"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+                    Subject
+
+                    <input
+                        type="text"
+                        id="taskSubject"
+                        placeholder="e.g. DBMS"
+                    >
+
+                </label>
+
+
+                <label>
+                    Due Date
+
+                    <input
+                        type="date"
+                        id="taskDate"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+                    Priority
+
+                    <select id="taskPriority">
+
+                        <option value="Low">
+                            Low
+                        </option>
+
+                        <option value="Medium" selected>
+                            Medium
+                        </option>
+
+                        <option value="High">
+                            High
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+                <div class="modal-buttons">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        data-close="taskModal"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Add Task
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= GOAL MODAL ================= -->
+
+    <div class="modal-overlay" id="goalModal">
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Add Learning Goal</h2>
+                    <p>Decide what you want to learn</p>
+                </div>
+
+                <button
+                    class="close-modal"
+                    data-close="goalModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="goalForm">
+
+                <label>
+                    Learning Goal
+
+                    <input
+                        type="text"
+                        id="goalName"
+                        placeholder="e.g. Learn SQL Window Functions"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+                    Subject
+
+                    <input
+                        type="text"
+                        id="goalSubject"
+                        placeholder="e.g. DBMS"
+                    >
+
+                </label>
+
+
+                <label>
+                    Estimated Time
+
+                    <select id="goalTime">
+
+                        <option value="15 min">
+                            15 minutes
+                        </option>
+
+                        <option value="30 min">
+                            30 minutes
+                        </option>
+
+                        <option value="45 min">
+                            45 minutes
+                        </option>
+
+                        <option value="1 hour">
+                            1 hour
+                        </option>
+
+                        <option value="2 hours">
+                            2 hours
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+                <div class="modal-buttons">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        data-close="goalModal"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Add Goal
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CLASS MODAL ================= -->
+
+    <div class="modal-overlay" id="classModal">
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Add Class</h2>
+                    <p>Add a class to your weekly timetable</p>
+                </div>
+
+                <button class="close-modal" data-close="classModal">×</button>
+
+            </div>
+
+            <form id="classForm">
+
+                <label>
+                    Subject
+                    <input
+                        type="text"
+                        id="classSubject"
+                        placeholder="e.g. Data Structures"
+                        required
+                    >
+                </label>
+
+                <label>
+                    Day
+                    <select id="classDay" required>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                    </select>
+                </label>
+
+                <div class="form-row">
+
+                    <label>
+                        Start Time
+                        <input type="time" id="classStart" required>
+                    </label>
+
+                    <label>
+                        End Time
+                        <input type="time" id="classEnd" required>
+                    </label>
+
+                </div>
+
+                <div class="form-row">
+
+                    <label>
+                        Teacher
+                        <input
+                            type="text"
+                            id="classTeacher"
+                            placeholder="e.g. Manoj Sir"
+                        >
+                    </label>
+
+                    <label>
+                        Room
+                        <input
+                            type="text"
+                            id="classRoom"
+                            placeholder="e.g. Room 204"
+                        >
+                    </label>
+
+                </div>
+
+                <label>
+                    Color
+                    <select id="classColor">
+                        <option value="purple-box">Purple</option>
+                        <option value="blue-box">Blue</option>
+                        <option value="green-box">Green</option>
+                        <option value="orange-box">Orange</option>
+                    </select>
+                </label>
+
+                <div class="modal-buttons">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        data-close="classModal"
+                    >
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="primary-button">
+                        Add Class
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div id="toast" class="toast">
+        <span id="toastMessage">
+            Saved successfully!
+        </span>
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
